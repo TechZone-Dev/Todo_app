@@ -108,6 +108,7 @@ class CartItems extends StatefulWidget {
                           Row(
                             children: [
                             ElevatedButton(
+
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.grey,
                               ),
@@ -116,7 +117,7 @@ class CartItems extends StatefulWidget {
                                   SnackBar(content: Text('Order Placed')));
 
                                 },
-                                child:Text('Conform Order',style: TextStyle(color: Colors.white,fontSize: 10),)),
+                                child:Text('Conform Order',style: TextStyle(color: Colors.white),)),
                             SizedBox(width: 5,),
                             ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -134,7 +135,7 @@ class CartItems extends StatefulWidget {
                                         SnackBar(content: Text('Item Removed')));
 
                                   },
-                                  child:Text('Remove',style: TextStyle(color: Colors.white,fontSize: 10),)),
+                                  child:Text('Remove',style: TextStyle(color: Colors.white),)),
                           ])
                         ],
                       )
