@@ -106,35 +106,41 @@ class CartItems extends StatefulWidget {
 
                           Row(
                             children: [
-                            ElevatedButton(
+                           Container(
+                             width: MediaQuery.of(context).size.width*0.25,
+                             child:ElevatedButton(
 
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey,
-                              ),
-                                onPressed: (){
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Order Placed')));
+                                 style: ElevatedButton.styleFrom(
+                                   backgroundColor: Colors.grey,
+                                 ),
+                                 onPressed: (){
+                                   ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(content: Text('Order Placed')));
+
+                                 },
+                                 child:Text('Conform Order',style: TextStyle(color: Colors.white,fontSize: 8),)),
+                           ),
+                            SizedBox(width: 5,),
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.25,
+                            child:ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.grey,
+                                ),
+                                onPressed: () async{
+                                  setState(() {
+                                    _cartItems.removeAt(index);
+                                  });
+                                  final prefs = await SharedPreferences.getInstance();
+                                  List<String> cartItemString = _cartItems.map((item) => jsonEncode(item.toJson())).toList();
+                                  prefs.setStringList('cartItems', cartItemString);
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Item Removed')));
 
                                 },
-                                child:Text('Conform Order',style: TextStyle(color: Colors.white),)),
-                            SizedBox(width: 5,),
-                            ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.grey,
-                                  ),
-                                  onPressed: () async{
-                                    setState(() {
-                                      _cartItems.removeAt(index);
-                                    });
-                                    final prefs = await SharedPreferences.getInstance();
-                                    List<String> cartItemString = _cartItems.map((item) => jsonEncode(item.toJson())).toList();
-                                    prefs.setStringList('cartItems', cartItemString);
-
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text('Item Removed')));
-
-                                  },
-                                  child:Text('Remove',style: TextStyle(color: Colors.white),)),
+                                child:Text('Remove',style: TextStyle(color: Colors.white,fontSize: 8),)),
+                          )
                           ])
                         ],
                       )
