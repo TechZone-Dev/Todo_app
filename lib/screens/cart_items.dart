@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_login/screens/bottom_bar.dart';
 import 'package:todo_login/screens/notification_bar.dart';
-import 'package:todo_login/screens/storage.dart';
 import 'home_page.dart';
 import 'items.dart';
 
